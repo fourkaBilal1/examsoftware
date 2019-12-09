@@ -12,7 +12,7 @@ public class AverageObserver implements Observer {
 	}
 	@Override
 	public void update(Integer val) {
-		// TODO Auto-generated method stub
+		this.average = (this.average+val)/2;
 		
 	}
 

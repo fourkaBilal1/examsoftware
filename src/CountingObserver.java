@@ -16,7 +16,7 @@ public class CountingObserver implements Observer {
 	}
 	@Override
 	public void update(Integer val) {
-		// TODO Auto-generated method stub
+		this.counter++;
 		
 	}
 

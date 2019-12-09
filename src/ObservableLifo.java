@@ -2,7 +2,9 @@
 public class ObservableLifo implements IntegerBasicContainer, Observable {
 	int capacity;
 	int nb=0;
+	int i=0;
 	Integer[] queue;
+	Observer[] ObserverCollection = new Observer[2];
 	public ObservableLifo(int capacity) {
 		this.capacity = capacity;
 		this.queue = new Integer[capacity];
@@ -18,18 +20,23 @@ public class ObservableLifo implements IntegerBasicContainer, Observable {
 
 	@Override
 	public void addObserver(Observer o) {
-		
-		
+		this.ObserverCollection[this.i]=o;
+		i++;	
 	}
 
 	@Override
 	public void removeObserver(Observer o) {
-		// TODO Auto-generated method stub
-		
+		if(this.i!=0){ 
+			this.queue[i]=null;
+			this.i--;
+		}
 	}
 
 	@Override
 	public void sendNotification(Integer val) {
+		for(int j =0;j<this.i;j++) {
+			this.ObserverCollection[j].update(val);
+		}
 		
 		
 	}
